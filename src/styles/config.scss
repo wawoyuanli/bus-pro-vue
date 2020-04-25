@@ -1,0 +1,39 @@
+
+$navMenu: 250px;
+$navMenuMin: 64px;
+$layoutHeader: 75px;
+
+
+//主颜色
+$mainCcolor: #e7e5e3;
+$mainBodyColor:rgb(231, 219, 219);
+
+@mixin webkit($type, $value){
+  -webkit-#{$type}: $value;
+  -moz-#{$type}: $value;
+  -o-#{$type}: $value;
+  -ms-#{$type}: $value;
+  #{$type}: $value;
+}
+
+@mixin labelDom($align, $width, $line-height: "normal"){
+  label {
+    float: left;
+    width: $width + px;
+    text-align: $align;
+    line-height: $line-height + px;
+  }
+  .warp-content {
+      margin-left: $width + px;
+  }
+}
+.logo{
+  width:50px;
+  height: 50px;
+  padding: 0px;
+  margin: 0px;
+  right: 0;
+}
+.el-row{
+  margin-top: 15px;
+}

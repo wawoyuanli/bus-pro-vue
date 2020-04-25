@@ -1,0 +1,38 @@
+//改element ui 的文件
+.el-submenu .el-menu-item
+{
+    font-size: 14px;
+    padding-left:50px !important ;
+    &.is-active{
+        background-color: rgba(255, 100, 50, 0.2) !important;
+    }
+}
+
+.close{
+     .el-submenu{
+       &.is-opened{
+         >.el-submenu__title{
+           background-color: rgb(192, 106, 30);
+           
+         }
+       }
+     }
+   }
+   .el-menu--vertical{
+       .el-menu-item{line-height: 56px;}
+       .el-menu-item:hover{
+           background-color: rgb(184, 205, 90) !important;
+       }
+   }
+   el-row .nav{
+     margin-top:20px !important;
+   }
+//修改一级菜单的样式
+.el-menu{
+  color: blue; 
+  background-color: rgb(145, 179, 24) !important;
+  font-size:20px;
+}
+
+
+ 

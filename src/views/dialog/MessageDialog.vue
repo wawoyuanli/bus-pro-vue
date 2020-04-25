@@ -1,0 +1,95 @@
+<template>
+    <el-dialog title="" :visible.sync="data.dialog_info_flag" @close="close" width="580px" @opened="openDialog">
+        <el-form :model="data.form" ref="addInfoForm">
+          
+            <el-form-item label="内容："  :label-width="data.formLabelWidth" >
+                 <el-input v-model="data.form.content" placehoder="内容"></el-input>
+            </el-form-item>
+        
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+            <el-button @click="close">取消</el-button>
+            <el-button type="danger" :loading="data.submitLoading" @click="submit">确定</el-button>
+        </div>
+    </el-dialog>
+</template>
+<script>
+
+import { reactive, ref, watch ,computed} from '@vue/composition-api';
+export default {
+    name: 'dialogInfo',
+    props: {
+        flag: {
+            type: Boolean,
+            default: false
+        }
+    },
+    setup(props, { emit, root, refs }){
+        /**
+         * 数据
+         */
+        const username = computed(() =>  root.$store.state.app.username);
+        const data = reactive({
+            dialog_info_flag: false,  // 弹窗标记
+            formLabelWidth: '100px',
+            form: {
+                content:'',
+             
+             
+            },
+            // 分类下拉
+            categoryOption: [],
+            // 按钮加载
+            submitLoading: false
+        });
+               
+
+        // watch
+        watch(() => data.dialog_info_flag = props.flag);
+        /**
+         * vue2.0 methods
+         */
+        const close = () => {
+            data.dialog_info_flag = false;
+            resetForm()
+            emit("update:flag", false);
+        }
+        const openDialog = () => {
+            data.categoryOption = props.category
+        }
+        const resetForm = () => {
+            refs.addInfoForm.resetFields();
+        }
+        //提交表单数据
+        const submit = () => {
+            let requestData = {
+              content: data.form.content,              
+            }
+            console.log('提交表单数据')
+           console.log(responseData,'responseData')
+            data.submitLoading = true
+            AddInfo(requestData).then(response => {
+                let responseData = response.data
+                root.$message({
+                    message: responseData.message,
+                    type: 'success'
+                })
+                data.submitLoading = false
+                // 重置表单
+                resetForm()
+                // root.$refs['addInfoForm'].resetFields();
+            }).catch(error => {
+                data.submitLoading = false
+            })
+        }
+        return {
+            data,username,
+            // methods
+            close, openDialog, submit
+        }
+    }
+}
+</script>
+<style scoped>
+
+</style>
