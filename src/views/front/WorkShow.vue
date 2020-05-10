@@ -12,10 +12,10 @@
     <el-col :span="8" v-for="workItem in workList.item" :key="workItem.id">
       <div class="grid-content bg-purple">
           <img :src="workItem.imageUrl" width="200px" height="200px" />
-         <div>作者:&nbsp;&nbsp;&nbsp;&nbsp;{{workItem.name}}</div>
-        <div>职位:&nbsp;&nbsp;&nbsp;&nbsp;{{workItem.position}}</div>
+          <div>作者:&nbsp;&nbsp;&nbsp;&nbsp;{{workItem.name}}</div>
+          <div>职位:&nbsp;&nbsp;&nbsp;&nbsp;{{workItem.position}}</div>
           <div>部门:&nbsp;&nbsp;&nbsp;&nbsp;{{workItem.department}}</div>
-         <div>创建时间:&nbsp;&nbsp;&nbsp;&nbsp;{{workItem.createTime}}</div>
+          <div>创建时间:&nbsp;&nbsp;&nbsp;&nbsp;{{workItem.createTime}}</div>
           <div>简介:&nbsp;&nbsp;&nbsp;&nbsp;{{remove(workItem.content)}}</div>
         </div>
         </el-col>
@@ -108,8 +108,7 @@ export default {
          handleCurrentChange,
          remove
        }
-    }
-    
+    }    
 }
 </script>
 <style lang="scss" scoped>

@@ -1,9 +1,9 @@
 <template>
     <div class="message">
-        <MainHeader/>
-         <div class="current-position">
-            <h4>您当前所在位置：首页>公交动态>公交查询>公交文化>留言板 </h4>
-        </div>
+    <MainHeader/>
+    <div class="current-position">
+    <h4>您当前所在位置：首页>公交动态>公交查询>公交文化>留言板 </h4>
+    </div>
   <hr/>
   <!--富文本编辑器-->
         <el-form :model="data.form" ref="addInfoForm">

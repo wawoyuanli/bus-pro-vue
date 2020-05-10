@@ -33,6 +33,7 @@
             </el-submenu>
 
             <el-menu-item index="5"><a href="/front/message">留言板</a></el-menu-item>
+            <el-menu-item index="6"><a href="/front/forum">论坛</a></el-menu-item>
                     <!--
                         target:
                         _blank:在新窗口中打开被链接文档。
@@ -78,7 +79,7 @@ export default {
 
 }
  .el-menu{
-    background-color:#CC99CC;
+    background-color:rgba(96, 181, 202, 0.3);
     border-radius: 4px;
 }
 .el-menu-item {

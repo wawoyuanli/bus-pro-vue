@@ -18,9 +18,9 @@
    <el-table
     :data="tableData.item"
      v-loading="loadingData"
-        @selection-change="handleSelectionChange"
+     @selection-change="handleSelectionChange"
      style="width: 100%">
-       <el-table-column
+      <el-table-column
       type="selection"
       style="align:center">
     </el-table-column>
@@ -146,7 +146,7 @@ export default {
                 getMessageList()
             })
         }
-        //站点列表
+        //留言
       const getMessageList=()=>{
           // 单独处理数据
             //let requestData = formatData();
@@ -161,6 +161,10 @@ export default {
         GetMessageList(requestData).then(response=>{
           console.log('response',response)
           let data=response.data.messageList;
+
+          for(let i in data){
+            remove(data[i].content)
+          }
            //更新列表
             tableData.item=data
             //数据总数
@@ -182,6 +186,9 @@ export default {
          console.log('author',author.value)
          console.log('userid',userid)
          console.log('tableData.item.userid',tableData.item.userid)
+      }
+        const remove=(str)=>{
+        return str.replace(/<[^>]+>/g, "");
       }
       //生命周期
       onMounted(()=>{
@@ -206,7 +213,8 @@ export default {
               responseMessage,
               messageid,
               authorid,
-              author
+              author,
+              remove
            
             }
       }

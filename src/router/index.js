@@ -63,7 +63,7 @@ const routes = [
       name: 'BusCulture',
       hidden:true,
       meta:{
-        name:'公安查询'
+        name:'公交文化'
             },
       component: () => import( '../views/front/BusCulture.vue')
      
@@ -89,7 +89,15 @@ const routes = [
             },
       component: () => import( '../views/front/WorkShow.vue')
     },
-
+    {
+      path: '/front/forum',
+      name: 'Forum',
+      hidden:true,
+      meta:{
+        name:'论坛'
+            },
+      component: () => import( '../views/front/Forum.vue')
+    },
     //后台
     {
       path: "/console",

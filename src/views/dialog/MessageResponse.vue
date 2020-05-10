@@ -76,7 +76,7 @@ quillEditor
               id:props.id ,
               admin:username.value             
             }
-            console.log('提交表单数据---------回复')
+            console.log('提交表单数据---------回复',requestData)
          
             data.submitLoading = true
             MessageResponse(requestData).then(response => {

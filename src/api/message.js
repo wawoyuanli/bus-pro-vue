@@ -35,3 +35,11 @@ export function GetMessageList(data){
          data:data
      })
  }
+ export function GetforumData(data){
+    return service.request({
+         method:"post",
+         url:"/message/getForumData", //论坛列表
+         data:data
+     })
+ }
+ 

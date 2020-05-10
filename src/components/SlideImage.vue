@@ -1,5 +1,5 @@
 <template>
-     <div class="index-content" id="my">
+     <div class="index-content">
     <div class="banner">
         <img  v-for="(item,i) in img " :key="i" :src="item" v-show="i==n" alt="banner"/>
         <div class="banner-circle">
@@ -8,10 +8,7 @@
             </ul> 
         </div>
     </div>
-
-
-     </div>
-
+</div>
 </template>
 <script>
 export default {
@@ -19,15 +16,14 @@ export default {
     data(){
       return{
             img:[
-                require('@/assets/bus06.jpg'),
-                require('@/assets/bus07.png'),
-                require('@/assets/bus08.png'),
-                require('@/assets/bus07.png'),
-                require('@/assets/bus08.png'),
+                require('@/assets/slide01.jpg'),
+                require('@/assets/slide02.png'),
+                require('@/assets/slide03.png'),
+                require('@/assets/slide06.png'),
+                require('@/assets/slide01.jpg'),
             ],
             n:2
-      }
-               
+          }      
         },
         methods:{
             fun:function(){
@@ -43,41 +39,13 @@ export default {
         mounted:function(){    //生命周期  钩子函数   挂载完成
             this.fun()
         }
-}
+  }
 </script>
 <style scoped>
-*{
-    margin:0;
-    padding:0;
+.index-content{
+    width:100%;
 }
-ul {
-    list-style-type:none;
-}
-body {
-    font-size: 14px;
-    background: #fff;
-    overflow-y:scroll;
-    overflow-x:hidden;
-}
-html,body {
-    max-width:720px;
-    height:100%;
-    margin:0 auto;
-}
-
-
-/*index*/
-.index-content .banner {
-    position: relative;
-}
-.index-content .banner .banner-circle {
-    position: absolute;
-    bottom: 5px;
-    left: 0;
-    right: 0;
-    color: #fff;
-}
-.index-content .banner .banner-circle li{
+  .index-content .banner .banner-circle li{
     display:inline-block;
     background: rgba(0,0,0,.3);
     border-radius: 50%;
@@ -91,47 +59,10 @@ html,body {
     background: rgba(0,0,0,.8);
 }
 .index-content .banner img {
-    width: auto;
+    width: 100%;
     height: 420px;
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
-    border-radius: 2px;
-  
-}
-/*index-category*/
-.index-content .index-category {
-    margin-top: 5%;
-}
-.index-content .index-category .category {
-    width: 50%;
-    float:left;
-    text-align:center;
-}
-.index-content .index-category .category .iconfont {
-    font-size: 40px;
-    display:inline-block;
-    padding: 10%;
-    border-radius: 50%;
-    color:#fff;
-    border: 3px solid #f9f9f9;
-    box-shadow: 0px 0px 6px rgba(0,0,0,.5);
-}
-.index-content .index-category .category .iconfont{
-    background: #92d85c;
-}
-.index-content .index-category .category:nth-child(2) .iconfont{
-    background: #f60;
-}
-.index-content .index-category .category:nth-child(4) .iconfont{
-    background: #f00;
-}
-.index-content .index-category .category label {
-    display: block;
-    padding: 10% 0;
-    color: #999;
-}
- 
-
-
-
+    border-radius: 2px;  
+} 
 </style>

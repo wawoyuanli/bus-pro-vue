@@ -6,8 +6,6 @@
             <hr/>
         </div>
           <div class="busCulture">
-            <!-- <img src="../../assets/22.jpg" width="50%" height="600px"/>
-            <img src="../../assets/33.jpg" width="50%" height="600px"/> -->
             <h4>世界各国那些关于 公交车的“趣味文化</h4>
              <div class="content">
 公交车，也叫城市客车、巴士或大巴，是专为解决城市和城郊运输而设计的用车。最早的公交车出现在1829年的英国伦敦，是一辆马拉式公共马车。如今，公交车快速发展，它已不再是令人厌烦的拥挤空间，而是感受人与人之间温暖的移动空间。
@@ -140,7 +138,7 @@ export default {
     
 }
 </script>
-<style scoped>
+<style lang="scss" scoped>
 .time {
     font-size: 13px;
     color: #999;
@@ -177,15 +175,23 @@ export default {
     box-shadow:  0 0 10px darkgray;
     width: 100%;
     height: 50%;
-    /* background-image: url('../../assets/back02.jpg'); */
-    background-size: cover;
+  }
+  .busCulture .content{
+    width:80%;
+    margin:0 auto;
+    .title{
+      margin-top: 3%;
+      font-size: 20px;
+      font-weight: bold;
+      color: royalblue;
+    }
   }
   .busCulture h4{
     margin-top: 10px;
   text-align: center;
-  color: rgb(155, 108, 56);
-  font-size: 20px;
-  font-family: '宋体';
+  color: blue;
+  font-size: 23px;
+  margin-bottom: 10px;
   }
   .busCulture .content{
     font-size: 18px;
