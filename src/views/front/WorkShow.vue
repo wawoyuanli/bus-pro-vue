@@ -11,12 +11,12 @@
   <el-row>
     <el-col :span="8" v-for="workItem in workList.item" :key="workItem.id">
       <div class="grid-content bg-purple">
-          <img :src="workItem.imageUrl" width="200px" height="200px" />
-          <div>作者:&nbsp;&nbsp;&nbsp;&nbsp;{{workItem.name}}</div>
-          <div>职位:&nbsp;&nbsp;&nbsp;&nbsp;{{workItem.position}}</div>
-          <div>部门:&nbsp;&nbsp;&nbsp;&nbsp;{{workItem.department}}</div>
-          <div>创建时间:&nbsp;&nbsp;&nbsp;&nbsp;{{workItem.createTime}}</div>
-          <div>简介:&nbsp;&nbsp;&nbsp;&nbsp;{{remove(workItem.content)}}</div>
+          <img src="../../assets/people.jpg" width="200px" height="200px" />
+          <div><span style="color:blue">作者:</span>&nbsp;&nbsp;&nbsp;&nbsp;{{workItem.name}}</div>
+          <div><span style="color:blue">职位:</span>&nbsp;&nbsp;&nbsp;&nbsp;{{workItem.position}}</div>
+          <div><span style="color:blue">部门:</span>&nbsp;&nbsp;&nbsp;&nbsp;{{workItem.department}}</div>
+          <div><span style="color:blue">创建时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;{{workItem.createTime}}</div>
+          <div><span style="color:blue">简介:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/front/workDetail">{{remove(workItem.content)}}</a></div>
         </div>
         </el-col>
   </el-row>
@@ -131,7 +131,7 @@ border-radius: 2px;
    background:rgb(250, 251, 252);
    margin-top: 20px;
    font-family: 'Times New Roman",Times,serif';
-   font-size: 20px;
+   font-size: 18px;
    padding: 10px 10px;
  }
  .page{

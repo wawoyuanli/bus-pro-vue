@@ -113,6 +113,8 @@ export default {
                    content:response.data.workList[0].content,
                    }
                    data.imageUrl=data.form.image;
+                  // var dataURL= URL.createObjectURL(data.form.image)
+                  console.log(dataURL,'8888')
             console.log( data.imageUrl,' data.imageUrl')
            });
         }

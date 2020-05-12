@@ -108,7 +108,7 @@ export default {
           }
             const handleCurrentChange=(value)=>{
               page.pageIndex=value
-              getStationList()  
+              getLines()  
             }
             const handleSelectionChange=(value)=>{
                 let id=value.map(item=>item._id);

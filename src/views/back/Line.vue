@@ -40,7 +40,7 @@
     <el-table-column prop="price" label="票价"  width="100"> </el-table-column>
     <el-table-column prop="direction" label="方向"  width="100"></el-table-column>
     <el-table-column prop="station_num" label="站点数"  width="100"></el-table-column>
-    <el-table-column prop="username" label="维护人员"  width="100">刘洪唱 </el-table-column>
+    <el-table-column prop="username" label="维护人员"  width="100">胡元丽 </el-table-column>
     <el-table-column prop="createTime" label="创建时间"  width="100"> </el-table-column>
        <el-table-column
       fixed="right"
@@ -65,7 +65,7 @@
       background
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
-      :page-sizes="[10, 20, 50, 100]"
+      :page-sizes="[5,6,7,8,9,10]"
       layout="total, sizes, prev, pager, next, jumper"
       :total="total">
       </el-pagination>
@@ -114,7 +114,7 @@ export default {
           }
             const handleCurrentChange=(value)=>{
               page.pageIndex=value
-              getStationList()  
+              getLines()  
             }
             const handleSelectionChange=(value)=>{
                 let id=value.map(item=>item._id);
@@ -127,7 +127,7 @@ export default {
            //页码
           const page=reactive({
             pageIndex:1,
-            pageSize:10
+            pageSize:5
           })
          //删除提醒
            const deleteItem = (_id) => {

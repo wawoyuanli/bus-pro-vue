@@ -271,7 +271,7 @@ export default {
       const register = (() => {
         let requestData = {
           username: ruleForm.username,
-          password: sha1(ruleForm.password),
+          password: ruleForm.password,
           code: ruleForm.code,
           module: 'register'
         }

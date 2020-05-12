@@ -10,10 +10,10 @@
   <el-row>
     <el-col :span="8" v-for="newsItem in newsList.item" :key="newsItem.id">
       <div class="grid-content bg-purple">
-        <div>标题:&nbsp;&nbsp;&nbsp;&nbsp;{{newsItem.title}}</div>
-        <div>发布时间：&nbsp;&nbsp;&nbsp;&nbsp;{{newsItem.createTime}}</div>
-        <div>作者:&nbsp;&nbsp;&nbsp;&nbsp;胡元丽</div>
-        <div>内容:&nbsp;&nbsp;&nbsp;&nbsp;{{newsItem.content}}</div>
+        <div><span style="color:blue">标题:</span>&nbsp;&nbsp;&nbsp;&nbsp;{{newsItem.title}}</div>
+        <div><span style="color:blue">发布时间：</span>&nbsp;&nbsp;&nbsp;&nbsp;{{newsItem.createTime}}</div>
+        <div><span style="color:blue">作者:</span>&nbsp;&nbsp;&nbsp;&nbsp;胡元丽</div>
+        <div><span style="color:blue" class="">内容:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/front/newDetail">{{newsItem.content}}</a></div>
         </div>
         </el-col>
   </el-row>
@@ -106,15 +106,16 @@ export default {
 }
 
 </script>
-<style scoped>
+<style lang="scss" scoped>
  .grid-content{
    box-shadow: 0px 0px 20px rgb(66, 66, 62);
    width: 420px;
-   height: 400px;
+   height: 420px;
    background:rgb(250, 251, 252);
    margin-top: 20px;
+   margin-bottom: 10px;
    font-family: 'Times New Roman",Times,serif';
-   font-size: 20px;
+   font-size: 18px;
    padding: 10px 10px;
  }
 .content{
@@ -125,5 +126,13 @@ export default {
   float: right;
   margin-top: 30px;
   margin-right: 50px;
+}
+.grid-content{
+  overflow: hidden;
+    text-overflow: ellipsis;
+  :nth-child(4){
+    // overflow: hidden;
+  }
+
 }
 </style>

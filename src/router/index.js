@@ -47,6 +47,15 @@ const routes = [
     },
     component: () => import( '../views/front/New.vue')
   },
+  {
+    path: '/front/newDetail',
+    name: 'NewDetail',
+    hidden:true,
+    meta:{
+    name:'新闻公告详情'
+    },
+    component: () => import( '../views/front/NewDetail.vue')
+  },
   //公交查询
   {
     path: '/front/busSearch',
@@ -68,6 +77,15 @@ const routes = [
       component: () => import( '../views/front/BusCulture.vue')
      
       
+    },
+    {
+      path: '/front/workDetail',
+      name: 'WorkDetail',
+      hidden:true,
+      meta:{
+        name:'工作详情'
+            },
+      component: () => import( '../views/front/WorkDetail.vue')   
     },
     //留言板
     {
@@ -138,20 +156,20 @@ const routes = [
           },
           component: () => import("../views/back/Line.vue")
         },
-        {
-          path: "/stationMaintain",
-          name: "StationMaintain",
-          meta: {
-            name: "站点维护",
+        // {
+        //   path: "/stationMaintain",
+        //   name: "StationMaintain",
+        //   meta: {
+        //     name: "站点维护",
            
-          },
-          component: () => import("../views/back/Station.vue")
-        },
+        //   },
+        //   component: () => import("../views/back/Station.vue")
+        // },
         {
           path: "/bus",
           name: "Bus",
           meta: {
-            name: "线路站点维护",
+            name: "站点维护",
            
           },
           component: () => import("../views/back/Bus.vue")
@@ -160,7 +178,7 @@ const routes = [
           path: "/change",
           name: "Change",
           meta: {
-            name: "换乘查询列表",
+            name: "换乘查询",
            
           },
           component: () => import("../views/back/Change.vue")
@@ -203,7 +221,7 @@ const routes = [
           path: "/cultureManage",
           name: "CultureManage",
           meta: {
-            name: "公交文化管理",
+            name: "员工风采栏",
         
           },
           component: () => import("../views/back/Culture.vue")

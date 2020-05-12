@@ -117,7 +117,7 @@ export default {
             }
           const handleCurrentChange=(value)=>{
           page.pageIndex=value
-          getStationList()  
+          getWorkList()  
         }
           const handleSelectionChange=(value)=>{
                 let id=value.map(item=>item._id);
@@ -186,7 +186,7 @@ export default {
         loadingData.value=true
     //    console.log('开始查询')
         GetWorkList(requestData).then(response=>{
-     //    console.log('response',response)
+        console.log('上传图片',response)
           let data=response.data.workList;
            //更新列表
             tableData.item=data

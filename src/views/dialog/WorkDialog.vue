@@ -13,6 +13,7 @@
           :on-success="handleAvatarSuccess"
           :before-upload="beforeAvatarUpload"
           v-model="data.form.image"
+          ref="upload"
           >
           <img v-if="data.imageUrl" :src="data.imageUrl" class="avatar">
           <i v-else class="el-icon-plus avatar-uploader-icon"></i>
@@ -43,7 +44,7 @@
   import {quillEditor} from 'vue-quill-editor'
   import { reactive, ref, watch,onMounted } from '@vue/composition-api';
   import {QiniuToKen,loadTableData} from '@/api/common.js'
-  import {GetWorkList,EditWorkInfo,AddWorkInfo} from '@/api/work.js'
+  import {GetWorkList,EditWorkInfo,AddWorkInfo,UploadImage} from '@/api/work.js'
 export default {
     name: 'dialogInfo',
     components:{
@@ -91,8 +92,7 @@ export default {
            }
            const getWorkList=()=>{
            GetWorkList().then(response=>{
-
-             console.log(response,'edit')
+             console.log(response,'get')
             })
            }
         //文件是否上传成功
@@ -104,16 +104,18 @@ export default {
         const  beforeAvatarUpload=(file)=> {
         console.log(file,'file request ---------先执行  判断上传格式')
         const isJPG = file.type ==='image/jpeg';
-        console.log(isJPG,'isJPG')
+         const isPNG = file.type ==='image/png';
+        console.log(isJPG,'imag',isPNG)
+        
         const isLt2M = file.size / 1024 / 1024 < 2;
 
-        if (!isJPG) {
-          root.$message.error('上传头像图片只能是 JPG 格式!');
+        if (!isJPG && !isPNG) {
+          root.$message.error('上传头像图片只能是 JPG  PNG格式!');
         }
         if (!isLt2M) {
           root.$message.error('上传头像图片大小不能超过 2MB!');
         }
-        return isJPG && isLt2M;
+        return isJPG && isLt2M && isPNG;
       }
 
       //添加工作展示信息

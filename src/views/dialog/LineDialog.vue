@@ -2,37 +2,37 @@
     <el-dialog title="添加线路" :visible.sync="data.dialog_info_flag" @close="close" width="580px" @opened="openDialog">
         <el-form :model="data.form" ref="addInfoForm">
             <el-form-item label="线路名称："  :label-width="data.formLabelWidth" >
-                 <el-input v-model="data.form.line_name" placehoder="线路名称"></el-input>
+                 <el-input v-model="data.form.line_name" placeholder="线路名称"></el-input>
             </el-form-item>
             <el-form-item label="始发站：" :label-width="data.formLabelWidth" prop="title">
-                <el-input v-model="data.form.start_station" placehoder="始发站"></el-input>
+                <el-input v-model="data.form.start_station" placeholder="始发站"></el-input>
             </el-form-item>
              <el-form-item label="中间站：" :label-width="data.formLabelWidth" prop="title">
-                <el-input v-model="data.form.mid_station" placehoder="中间站"></el-input>
+                 <textarea rows="2" cols="70" v-model="data.form.mid_station" placeholder="中间站"/>
             </el-form-item>
              <el-form-item label="终点站：" :label-width="data.formLabelWidth" prop="content">
-                    <el-input v-model="data.form.end_station" placehoder="终点站"></el-input>
+                    <el-input v-model="data.form.end_station" placeholder="终点站"></el-input>
             </el-form-item>
             <el-form-item label="开始时间：" :label-width="data.formLabelWidth" prop="content">
-                    <el-input v-model="data.form.start_time" placehoder="开始时间"></el-input>
+                    <el-input v-model="data.form.start_time" placeholder="开始时间"></el-input>
             </el-form-item>
               <el-form-item label="结束时间：" :label-width="data.formLabelWidth" prop="content">
-                    <el-input v-model="data.form.end_time" placehoder="结束时间"></el-input>
+                    <el-input v-model="data.form.end_time" placeholder="结束时间"></el-input>
             </el-form-item>
               <el-form-item label="间隔时间：" :label-width="data.formLabelWidth" prop="content">
-                    <el-input v-model="data.form.interval" placehoder="间隔时间"></el-input>
+                    <el-input v-model="data.form.interval" placeholder="站点间隔时间"></el-input>
             </el-form-item>
               <el-form-item label="距离：" :label-width="data.formLabelWidth" prop="content">
-                    <el-input v-model="data.form.distance" placehoder="距离"></el-input>
+                    <el-input v-model="data.form.distance" placeholder="距离"></el-input>
             </el-form-item>
              <el-form-item label="票价：" :label-width="data.formLabelWidth" prop="content">
-                    <el-input v-model="data.form.price" placehoder="票价"></el-input>
+                    <el-input v-model="data.form.price" placeholder="票价"></el-input>
             </el-form-item>
             <el-form-item label="方向：" :label-width="data.formLabelWidth" prop="content">
-                    <el-input v-model="data.form.direction" placehoder="方向"></el-input>
+                    <el-input v-model="data.form.direction" placeholder="方向"></el-input>
             </el-form-item>
             <el-form-item label="站点数：" :label-width="data.formLabelWidth" prop="station_num">
-                    <el-input v-model="data.form.station_num" placehoder="方向"></el-input>
+                    <el-input v-model="data.form.station_num" placeholder="站点数"></el-input>
             </el-form-item>
            
         </el-form>
