@@ -6,18 +6,18 @@
         <h4>您当前所在位置：首页>公交动态>公交查询>公交文化>留言板>论坛 </h4>
         </div>
         <hr/>
-<el-row>
-    <!-- <el-col :span="8" v-for="newsItem in newsList.item" :key="newsItem.id">
-      <div class="grid-content bg-purple">
-        <div>标题:&nbsp;&nbsp;&nbsp;&nbsp;{{newsItem.title}}</div>
-        <div>发布时间：&nbsp;&nbsp;&nbsp;&nbsp;{{newsItem.createTime}}</div>
-        <div>作者:&nbsp;&nbsp;&nbsp;&nbsp;胡元丽</div>
-        <div>内容:&nbsp;&nbsp;&nbsp;&nbsp;{{newsItem.content}}</div>
-        </div>
-        </el-col> -->
-   </el-row>
+
+    <!--数据列表-->
+   <div class="list-wrapper">
+    <ul>
+      <li v-for="item in data.item" :key="item._id">
+       <span @click="responseClick(item._id)">{{remove(item.content)}}</span>
+       <div>创建时间：{{item.createTime}}</div>
+      </li>
+    </ul>
+   </div>
   <!--分页-->
-    <el-pagination
+    <!-- <el-pagination
       background
       :total="total"
       @size-change="handleSizeChange"
@@ -25,7 +25,7 @@
       :page-sizes="[3,4,5]"
       layout="total, sizes, prev, pager, next, jumper"
       class="pull-right">
-    </el-pagination>
+    </el-pagination> -->
         <MainFooter/>
     </div>
 </template>
@@ -41,14 +41,15 @@ export default {
      MainFooter
     },
     setup(props,{root}){
-        const data=reactive({
+      const data=reactive({
             item:[]
-        })
-        const total=ref(0)
-    const page=reactive({
-        pageIndex:1,
-        pageSize:3
-    });
+      })
+      const total=ref(0)
+    
+      const page=reactive({
+          pageIndex:1,
+          pageSize:100
+      });
     const handleSizeChange=(value)=>{
         page.pageSize=value
         console.log(value) 
@@ -67,11 +68,11 @@ export default {
           isEdit:false
         }
         GetforumData(requestData).then(response=>{
-         console.log('response',response)
-          let data=response.data.messageList;
+        //  console.log('response',response)
+          var result=response.data.messsageList;
            //更新列表
-            data.item=data
-             console.log(  data.item,'data')
+            data.item=result
+             console.log(data.item,'data')
             //数据总数
             total.value=response.data.total
           // console.log(data,'公告列表列表',total,'total')
@@ -80,9 +81,18 @@ export default {
           console.log(err)
         })
       }
-      const remove=(str)=>{
+
+      const responseClick=(_id)=>{
+        console.log(_id)
+        root.$router.push({
+          path:'/front/responseDetail',
+          query: {id:_id}
+        })
+      }
+    const remove=(str)=>{
         return str.replace(/<[^>]+>/g, "");
       }
+
       onMounted(()=>{
           getForumList()
       })
@@ -93,11 +103,34 @@ export default {
           page,
           handleSizeChange,
           handleCurrentChange,
-          total
+          total,
+          responseClick
    }
   } 
 }
 </script>
-<style scoped>
+<style lang="scss" scoped>
+.culture .list-wrapper{
+  margin:0 auto;
+  text-align: center;
+  ul{
+ 
+    list-style: none;
+    li{
+       width: 100%;
+       height: 90px;
+       background-color: rgb(238, 228, 228);
+       cursor: pointer;
+       border-bottom: gray;
+       margin-top: 20px;
+      padding-top: 10px;
+       :nth-child(2){
+         font-size: 12px;
+         color: gray;
+         margin-top: 40px;
+       }
+    }
+  }
+}
 
 </style>

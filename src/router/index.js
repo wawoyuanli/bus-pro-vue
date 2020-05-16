@@ -87,6 +87,15 @@ const routes = [
             },
       component: () => import( '../views/front/WorkDetail.vue')   
     },
+    {
+      path: '/front/responseDetail',
+      name: 'ResponseDetail',
+      hidden:true,
+      meta:{
+        name:'留言详情'
+            },
+      component: () => import( '../views/front/ResponseDetail.vue')   
+    },
     //留言板
     {
       path: '/front/message',

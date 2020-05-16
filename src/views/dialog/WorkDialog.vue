@@ -104,18 +104,18 @@ export default {
         const  beforeAvatarUpload=(file)=> {
         console.log(file,'file request ---------先执行  判断上传格式')
         const isJPG = file.type ==='image/jpeg';
-         const isPNG = file.type ==='image/png';
-        console.log(isJPG,'imag',isPNG)
+        //  const isPNG = file.type ==='image/png';
+        // console.log(isJPG,'imag',isPNG)
         
         const isLt2M = file.size / 1024 / 1024 < 2;
 
-        if (!isJPG && !isPNG) {
-          root.$message.error('上传头像图片只能是 JPG  PNG格式!');
+        if (!isJPG) {
+          root.$message.error('上传头像图片只能是 JPG格式!');
         }
         if (!isLt2M) {
           root.$message.error('上传头像图片大小不能超过 2MB!');
         }
-        return isJPG && isLt2M && isPNG;
+        return isJPG && isLt2M;
       }
 
       //添加工作展示信息

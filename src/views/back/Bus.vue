@@ -6,7 +6,7 @@
           您当前所在位置：首页>线路站点维护
       </el-col>
       <el-col :span="8" >
-      <el-input  placeholder="请输入线路、站点"  v-model="search_keyWork"></el-input>
+      <el-input  placeholder="请输入站点"  v-model="search_keyWork"></el-input>
       </el-col>
         
       <el-col :span="4">
@@ -32,7 +32,7 @@
     <el-table-column  prop="line_name" label="线路"   width="500px"></el-table-column>
     <el-table-column prop="station_name" label="站点" width="300px"> </el-table-column>
     <el-table-column prop="index" label="站点顺序" width="200px"> </el-table-column>
-    <el-table-column prop="username" label="维护人员" width="200px">牛燕燕 </el-table-column>
+    <el-table-column prop="username" label="维护人员" width="200px">胡元丽 </el-table-column>
     <el-table-column prop="createTime" label="创建时间" width="100px"> </el-table-column>
 
     <el-table-column
@@ -172,7 +172,7 @@ export default {
          let requestData={
           pageIndex:page.pageIndex,
           pageSize:page.pageSize,
-          line_name:search_keyWork.value,
+          station_name:search_keyWork.value,
           full:true,
           isEdit:false,
           sortName:'line_name'

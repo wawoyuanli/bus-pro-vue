@@ -32,3 +32,11 @@ export function GetChangeLineList(data){
          data:data
      })
  }
+
+ export function ChangeLine(data){
+    return service.request({
+         method:"post",
+         url:"/change/changeLine",  
+         data:data
+     })
+ }

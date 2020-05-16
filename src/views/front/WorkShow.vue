@@ -11,7 +11,8 @@
   <el-row>
     <el-col :span="8" v-for="workItem in workList.item" :key="workItem.id">
       <div class="grid-content bg-purple">
-          <img src="../../assets/people.jpg" width="200px" height="200px" />
+          <!-- <img src="../../assets/people.jpg" width="200px" height="200px" /> -->
+          <img :src="workItem.imageUrl" width="200px" height="200px">
           <div><span style="color:blue">作者:</span>&nbsp;&nbsp;&nbsp;&nbsp;{{workItem.name}}</div>
           <div><span style="color:blue">职位:</span>&nbsp;&nbsp;&nbsp;&nbsp;{{workItem.position}}</div>
           <div><span style="color:blue">部门:</span>&nbsp;&nbsp;&nbsp;&nbsp;{{workItem.department}}</div>

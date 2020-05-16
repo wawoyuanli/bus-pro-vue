@@ -221,9 +221,7 @@ export default {
               getWorkList,
               page,
               total,
-              handleSelectionChange
-          
-           
+              handleSelectionChange 
             }
       }
 }

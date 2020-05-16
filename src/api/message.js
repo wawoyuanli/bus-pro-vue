@@ -42,4 +42,12 @@ export function GetMessageList(data){
          data:data
      })
  }
+ export function GetResponse(data){
+    return service.request({
+         method:"post",
+         url:"/message/getResponse", //回复列表
+         data:data
+     })
+ }
+ 
  

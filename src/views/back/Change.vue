@@ -6,13 +6,13 @@
           您当前所在位置：首页>公交换乘查询
       </el-col>
       <el-col :span="4" >
-      <el-input  placeholder="请输入起点站" v-model="search_keyWork"></el-input>
+      <el-input  placeholder="请输入起点站" v-model="start"></el-input>
       </el-col>
        <el-col :span="1" class="dao">
              到
       </el-col>
       <el-col :span="4" >
-      <el-input  placeholder="请输入终点站" v-model="search_keyWork"></el-input>
+      <el-input  placeholder="请输入终点站" v-model="end"></el-input>
       </el-col>
         
       <el-col :span="7">
@@ -32,9 +32,10 @@
       width="55">
     </el-table-column>
     <el-table-column prop="start_station" label="起点位置" width="200px"></el-table-column>
-    <el-table-column prop="end_station" label="终点位置" width="100px"> </el-table-column>
-    <el-table-column  prop="line_name" label="线路"   width="500px"></el-table-column>
-    <el-table-column prop="index" label="站点顺序" width="200px"> </el-table-column>
+    <el-table-column prop="end_station" label="终点位置" width="100px"></el-table-column>
+    <el-table-column  prop="line_name" label="经过线路"   width="200px"></el-table-column>
+    <el-table-column prop="mid_station" label="站点" width="600px"> </el-table-column>
+    <el-table-column prop="direction" label="方向" width="100px"> </el-table-column>
 
        <el-table-column
       fixed="right"
@@ -73,7 +74,8 @@
     </div>
 </template>
 <script>
- import {GetLines,DeleteLine,EditLine} from '@/api/line.js'
+ import {GetLines,DeleteLine,EditLine,} from '@/api/line.js'
+ import {ChangeLine} from '@/api/changeLine.js'
 import { reactive, ref,onMounted } from '@vue/composition-api';
 import LineDialog from '../dialog/LineDialog.vue';
 
@@ -94,7 +96,9 @@ export default {
         const dialog_info_edit=ref(false);
         const deleteInfoId = ref('');
         const loadingData=ref(false);
-        const search_keyWork=ref('');
+        // const search_keyWork=ref('');
+        const start=ref('');
+        const end=ref('');
         const lineid=ref('');
 
         const tableData=reactive({
@@ -175,25 +179,58 @@ export default {
           
       //站点列表
       const getLines=()=>{
-          // 单独处理数据
-            //let requestData = formatData();
+        
          let requestData={
-          pageIndex:page.pageIndex,
-          pageSize:page.pageSize,
-          line_name:search_keyWork.value,
-          full:true,
-          isEdit:false
+        start_station:start.value,
+        end_station:end.value
         }
-        console.log(requestData.line_name,'关键字')
+        if(requestData.start_station==='' && requestData.end_station===''){
+          root.$message({
+            message:'请先输入信息',
+            type:'error'
+          })
+        }
+        // console.log(requestData.line_name,'关键字')
         //加载状态
         loadingData.value=true
-        GetLines(requestData).then(response=>{
-          console.log('response',response)
-          let data=response.data.lineList;
-           //更新列表
-            tableData.item=data
+        ChangeLine(requestData).then(response=>{
+          console.log('response',response.data)
+          let data=response.data;
+          if(data.type===1){
+             //更新列表
+          tableData.item=data.lineList
+           root.$message({
+              message:'同条线路，可直达',
+              type:'success'
+            })
+          }else if(data.type===2){
+            var arr=[]
+           var l1= response.data.lineList
+           console.log(l1,'l1')
+           l1[0].forEach(item=>{
+             arr.push(item)
+           })
+          //  arr.push(l1[0])
+            var l2= response.data.m
+            l2.forEach(element => {
+              arr.push(element)
+            })
+            // console.log(arr,'arr')
+            tableData.item=arr
+            root.$message({
+              message:'换乘路线信息如下',
+              type:'success'
+            })
+            console.log(tableData.item,'item')
+          }else{
+            root.$message({
+              message:'无可换乘车辆',
+              type:'error'
+            })
+          }
+            
             //数据总数
-            total.value=response.data.total
+            // total.value=response.data.total
            //console.log(data,'线路列表',total,'total')
            //加载状态
         loadingData.value=false
@@ -204,7 +241,7 @@ export default {
        //生命周期
       onMounted(()=>{
         //获取线路列表
-        getLines()
+        // getLines()
       })
             //数据的返回
             return {
@@ -220,7 +257,8 @@ export default {
               editItem,
               loadingData,
               getLines,
-              search_keyWork,
+              start,
+              end,
               page,
               total,
               lineid
